@@ -19,14 +19,14 @@ function convertDateToString(date)
 
     if(date.day <10)
     {
-        dateStr.day=date.day +'0';
+        dateStr.day='0' + date.day;
     }
     else{
         dateStr.day=date.day.toString();
     }
     if(date.month <10)
     {
-        dateStr.month=date.month +'0';
+        dateStr.month='0' + date.month;
     }
     else{
         dateStr.month=date.month.toString();
@@ -40,7 +40,7 @@ function convertDateToString(date)
 
 function getAllDateFormats(date)
 {
-    var dateStr = convertDateToStr(date);
+    var dateStr = convertDateToString(date);
     var ddmmyyyy= dateStr.day + dateStr.month + dateStr.year;
     var mmddyyyy=dateStr.month+ dateStr.day+ dateStr.year;
     var yyyymmdd = dateStr.year + dateStr.month + dateStr.day;
@@ -84,9 +84,9 @@ function isLeapYear(year)
     }
     return false;
 }
-function getNextDate() 
+function getNextDate(date) 
 {
-    var day=date.day +1;
+    var day= date.day +1;
     var month= date.month;
     var year = date.year;
     var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
@@ -110,7 +110,7 @@ function getNextDate()
 
     }
     else{
-        if(day> daysInMonth[month-1 ])
+        if(day> daysInMonth[month-1])
         {
             day=1;
             month++;
@@ -146,5 +146,40 @@ function getNextPalindromeDate(date)
     return [ctr,nextDate];
 }
 
+var dateInput= document.querySelector('#bday-input');
+var showbtn=document.querySelector('#show-btn');
+var output=document.querySelector('#output');
+
+function clickHandler(e)
+{
+    var bdayStr=dateInput.value;
+    if(bdayStr !=='')
+    {
+        var listOfDate=bdayStr.split('-');
+        var date={
+            day: Number(listOfDate[2]),
+            month:Number(listOfDate[1]),
+            year:Number(listOfDate[0])
+
+        };
+        var isPalindrome=checkPalindromeForAllDateFormats(date);
+        if(isPalindrome)
+        {
+            output.innerText="Yay!! your birthday is palindrome";
+
+
+        }
+        else{
+            var [ctr, nextDate]=getNextPalindromeDate(date);
+            output.innerText = 'The next palindrome date is ' + nextDate.day + "-" + nextDate.month + "-" + 
+            nextDate.year + "," + " you missed it by " + ctr + " days!";
+             
+        }
+
+
+    }
+}
+
+showbtn.addEventListener('click',clickHandler);
     
 

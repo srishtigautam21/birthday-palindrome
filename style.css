@@ -1,0 +1,53 @@
+body{
+    background-color: burlywood;
+}
+h1{
+    text-align: center;
+    margin-top:5% ;
+    
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    width:20vw;
+    margin: auto;
+}
+#show-btn{
+    margin-top: 1rem;
+
+}
+label{
+    font-size: large;
+    font-weight: bold;
+}
+#bday-input{
+    margin-top: 1rem;
+}
+.footer{
+    
+    text-align: center;
+    bottom: 0;
+    padding: 1rem 1rem;
+    
+    margin-top: 90px;
+}
+.inside-footer{
+
+    font-size:large ;
+    color:black;
+   
+    font-weight:medium;
+}
+.link{
+    text-decoration: none;
+    font-size:large ;
+    color:black;
+    font-weight:medium;
+}
+.inline-link{
+   
+    list-style: none;
+   
+    display: inline;
+    margin-right: 2rem;
+}
